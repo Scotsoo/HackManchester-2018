@@ -15,11 +15,19 @@ public class NewBehaviourScript : MonoBehaviour {
 
     public void OnViewed()
     {
+        Debug.Log("ON VIEW!!");
         GetComponent<Renderer>().material = gaze;
+    }
+
+    public void OnTap()
+    {
+        Debug.Log("TAP!!");
     }
 
     public void NoView()
     {
+        Debug.Log("ON noview!!");
+
         GetComponent<Renderer>().material = noGaze;
     }
 }
