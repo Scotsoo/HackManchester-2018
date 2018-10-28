@@ -64,25 +64,33 @@ public class TapeLoader : MonoBehaviour
 
         return null;
     }
+    public float Speed = 1f;
     // Update is called once per frame
     void Update()
     {
-        var speed = 1f;
-        //if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
-        //}
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
-        //}
-        //if (Input.GetKey(KeyCode.DownArrow))
-        //{
-        //    transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
-        //}
-        if (Input.GetKey(KeyCode.UpArrow))
+        var _velocity = 2f;
+
+        //_velocity = Vector3.zero;
+        //Debug.Log("y" + );
+        Debug.Log("x" + transform.position.x);
+        Debug.Log("z" + transform.position.z);
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+            transform.position = transform.position + Camera.main.transform.right * _velocity * Time.deltaTime;
         }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position = transform.position + (Camera.main.transform.right * -1) * _velocity * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position = transform.position + Camera.main.transform.forward * _velocity * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position = transform.position + (Camera.main.transform.forward * -1) * _velocity * Time.deltaTime;
+        }
+
+        transform.position = new Vector3(transform.position.x, 30f, transform.position.z);
     }
 }

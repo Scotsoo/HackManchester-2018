@@ -11,23 +11,37 @@ public class Cam : MonoBehaviour {
 
     // Update is called once per frame
     public float speed = 5.0f;
+    private Vector3 _velocity = Vector3.zero;
+    public float Speed = 0.1f;
+
+    // Use this for initialization
+    //void Start () {
+    //	this.camera = GameObject.FindGameObjectWithTag("MainCamera");
+    //}
+
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        _velocity = Vector3.zero;
+
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector3(speed * Time.deltaTime, 0, 0);
+            _velocity += new Vector3(Speed, 0, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.S))
         {
-            transform.position = new Vector3(speed * Time.deltaTime, 0, 0);
+            _velocity -= new Vector3(Speed, 0, 0);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.position = new Vector3(0, speed * Time.deltaTime, 0);
+            _velocity += new Vector3(0, 0, Speed);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.position = new Vector3(0, speed * Time.deltaTime, 0);
+            _velocity -= new Vector3(0, 0, Speed);
         }
+
+        transform.position += _velocity;
+        //transform.position += this._velocity;
     }
 }

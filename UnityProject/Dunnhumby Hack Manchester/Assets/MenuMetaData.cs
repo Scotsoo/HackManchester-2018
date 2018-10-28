@@ -37,7 +37,6 @@ public class MenuMetaData : MonoBehaviour
             var reviews = Reviews.ToList();
             if (reviews.Count > 1 && tex == null) {
                 StartCoroutine(HandleIt(reviews));
-
             }
             gameObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
             gameObject.transform.rotation = new Quaternion(0.0f, Camera.main.transform.rotation.y, 0.0f, Camera.main.transform.rotation.w);
@@ -46,6 +45,8 @@ public class MenuMetaData : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(-50f, -500f, -500f);
             gameObject.transform.rotation = new Quaternion(0.0f, 0, 0.0f, 0);
+            Reviews = new List<Review>();
+            tex = null;
 
         }
     }
@@ -58,17 +59,9 @@ public class MenuMetaData : MonoBehaviour
         var s = new Shopper();
         var user = s.GetUser(review.UserId);
         var moviesSeen = s.GetMoviesSeenByUser(user.UserId);
-        
-        var filmCount = GameObject.FindGameObjectWithTag("FilmCount");
-        var filmName = GameObject.FindGameObjectWithTag("FilmName");
-        filmName.GetComponent<TextMesh>().text = moviesSeen.First(f => f.Id == review.MovieId).Title;
-        filmCount.GetComponent<TextMesh>().text = moviesSeen.ToList().Count.ToString();
-        var filmNameRating = GameObject.FindGameObjectWithTag("FilmNameRating");
-        var randomFilm = moviesSeen.ToList().First(f => f.Id != review.MovieId);
-        filmNameRating.GetComponent<TextMesh>().text = randomFilm.Title;
-        var userText = GameObject.FindGameObjectWithTag("Fullname");
-        userText.GetComponent<TextMesh>().text = user.Name;
-        //user.
+        var actors = s.GetActorsForMovie(review.MovieId).ToList();
+        var actor = actors[rnd.Next(0, actors.Count - 1)];
+        var actorCountStat = s.GetMoviesForActor(actor.Name).ToList();
         using (var www = new WWW(user.Image))
         {
 
@@ -78,6 +71,22 @@ public class MenuMetaData : MonoBehaviour
             var pic = GameObject.FindGameObjectWithTag("Picture");
             pic.GetComponent<Renderer>().material.mainTexture = tex;
         }
+        //var actors = s.get
+        var filmCount = GameObject.FindGameObjectWithTag("FilmCount");
+        var filmName = GameObject.FindGameObjectWithTag("FilmName");
+        var actorCount = GameObject.FindGameObjectWithTag("ActorCount");
+        var actorName = GameObject.FindGameObjectWithTag("ActorName");
+        actorCount.GetComponent<TextMesh>().text = actorCountStat.Count.ToString();
+        actorName.GetComponent<TextMesh>().text = actor.Name;
+        filmName.GetComponent<TextMesh>().text = moviesSeen.First(f => f.Id == review.MovieId).Title;
+        filmCount.GetComponent<TextMesh>().text = moviesSeen.ToList().Count.ToString();
+        var filmNameRating = GameObject.FindGameObjectWithTag("FilmNameRating");
+        var randomFilm = moviesSeen.ToList().First(f => f.Id != review.MovieId);
+        filmNameRating.GetComponent<TextMesh>().text = randomFilm.Title;
+        var userText = GameObject.FindGameObjectWithTag("Fullname");
+        userText.GetComponent<TextMesh>().text = user.Name;
+        //user.
+
     }
 
 }
