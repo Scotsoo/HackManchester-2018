@@ -60,11 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GazeUI For Canvas\Scripts\UI\EyeRaycaster.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\HelloVR\HeadsetDemoManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\HelloVR\HelloVRManager.cs" />
-    <Compile Include="Assets\GoogleVR\Demos\Scripts\HelloVR\ObjectController.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\KeyboardDemo\KeyboardDelegateExample.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\PermissionsDemo\PermissionsFlowManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\VideoDemo\AppButtonInput.cs" />
@@ -173,6 +173,11 @@
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
+    <Compile Include="Assets\ReticleTest.cs" />
+    <Compile Include="Assets\Safder Scripts\JackScript.cs" />
+    <Compile Include="Assets\Safder Scripts\JackTesting.cs" />
+    <Compile Include="Assets\Safder Scripts\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\ObjectController.cs" />
     <Compile Include="Assets\TapeGroup.cs" />
     <Compile Include="Assets\TapeLoader.cs" />
     <Compile Include="Assets\TapeMetadata.cs" />
@@ -187,6 +192,7 @@
     <None Include="Assets\_Creepy_Cat\_3D Scifi Kit Starter Kit\_Docs\Doc.txt" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitSolidColor.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_ReferenceUnlit.shader" />
+    <None Include="Assets\GazeUI For Canvas\ReadMe.txt" />
     <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
@@ -422,6 +428,21 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NFBB.Core">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/NFBB.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Google.ProtocolBuffers">
       <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
     </Reference>
@@ -445,21 +466,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/jscotson/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="NFBB.Core">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/NFBB.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DapperExtensions">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/DapperExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Registry">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Dapper.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

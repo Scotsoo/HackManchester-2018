@@ -380,6 +380,21 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NFBB.Core">
+      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/NFBB.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Google.ProtocolBuffers">
       <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
     </Reference>
@@ -418,21 +433,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="NFBB.Core">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/NFBB.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DapperExtensions">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/DapperExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Win32.Registry">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper">
-      <HintPath>C:/Users/jscotson/Documents/Repos/HackManchester-2018-2/UnityProject/Dunnhumby Hack Manchester/Assets/dlls/Dapper.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
