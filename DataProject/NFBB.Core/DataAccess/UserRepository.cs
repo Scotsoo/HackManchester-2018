@@ -32,6 +32,7 @@ namespace NFBB.Core.DataAccess
             connection.Close();
         }
 
+
         public void Add(User u)
         {
 

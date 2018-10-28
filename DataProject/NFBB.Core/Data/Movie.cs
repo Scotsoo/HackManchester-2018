@@ -14,5 +14,11 @@ namespace NFBB.Core.Data
 
         public string PosterUrl { get; set; }
 
+        public int MaxRating { get; set; }
+        public int AverageRating { get; set; }
+        public int NoOfRatings { get; set; }
+        public bool Available { get; set; }
+
+
     }
 }

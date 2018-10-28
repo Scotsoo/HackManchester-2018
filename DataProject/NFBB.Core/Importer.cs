@@ -14,7 +14,7 @@ namespace NFBB.Core
             Console.WriteLine("importing... " + filepath);
             //ImportTitles(filepath, repo);
 
-            //ImportReviews(filepath, repo);
+            ImportReviews(filepath, repo);
 
             //GenerateUsers(uRepo);
             return true;
@@ -35,7 +35,7 @@ namespace NFBB.Core
         private static void ImportReviews(string filepath, MovieRepository repo)
         {
             var reviewsimported = 0;
-            repo.DeleteAllReviews();
+            //repo.DeleteAllReviews();
 
             for(int i = 1; i <= 4; i++)
             {
@@ -69,7 +69,7 @@ namespace NFBB.Core
                     }
                     else
                     {
-                        if (itemsPerCompany < 100)
+                        if (itemsPerCompany < 2)
                         {
                             var items = line.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 

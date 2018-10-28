@@ -22,7 +22,8 @@ namespace NFBB.Core.DataAccess
         public IEnumerable<Movie> GetAll()
         {
             connection.Open();
-            var movies = connection.GetList<Movie>();
+            string sql = "select Id, Title, year, imdbID, PosterUrl,MaxRating, AverageRating, NoOfRatings, Available from vwmovie";
+            var movies = connection.Query<Movie>(sql);
             connection.Close();
 
             return movies;
@@ -31,7 +32,7 @@ namespace NFBB.Core.DataAccess
         public IEnumerable<Movie> GetByGenre(string name)
         {
             connection.Open();
-            string sql = "select Id, Title, year, imdbID, PosterUrl from movie where id in (select movieid from moviegenre where genre=@genre)";
+            string sql = "select Id, Title, year, imdbID, PosterUrl,MaxRating, AverageRating, NoOfRatings, Available from vwmovie where id in (select movieid from moviegenre where genre=@genre)";
             var movies = connection.Query<Movie>(sql, new { genre = name });
             connection.Close();
 
@@ -157,6 +158,28 @@ namespace NFBB.Core.DataAccess
             sql = "delete from genre";
             connection.Execute(sql);
             connection.Close();
+        }
+
+        public IEnumerable<Review> GetReviewsForMovie(int movieId)
+        {
+            connection.Open();
+            var predicate = Predicates.Field<Review>(f => f.MovieId, Operator.Eq, movieId);
+            var reviews = connection.GetList<Review>(predicate);
+            connection.Close();
+
+            return reviews;
+        }
+
+        public IEnumerable<Review> GetReviewsByUserAndMovie(int userId, int movieId)
+        {
+            connection.Open();
+            var pg = new PredicateGroup { Operator = GroupOperator.And, Predicates = new List<IPredicate>() };
+            pg.Predicates.Add(Predicates.Field<Review>(f => f.MovieId, Operator.Eq, movieId));
+            pg.Predicates.Add(Predicates.Field<Review>(f => f.UserId, Operator.Eq, userId));
+            var reviews = connection.GetList<Review>(pg);
+            connection.Close();
+
+            return reviews;
         }
 
     }
