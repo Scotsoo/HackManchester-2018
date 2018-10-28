@@ -12,6 +12,7 @@ namespace NFBB.Core
     public class Shopper
     {
         private MovieRepository movieRepo;
+        private UserRepository userRepo;
 
         public List<Movie> ShelfContent = new List<Movie>();
 
@@ -21,7 +22,7 @@ namespace NFBB.Core
 
             IDbConnection db = new SqlConnection(connectionstring);
             movieRepo = new MovieRepository(db);
-            var urepo = new UserRepository(db);
+            userRepo = new UserRepository(db);
         }
 
         public IEnumerable<Movie> PopulateShelves()
@@ -43,6 +44,21 @@ namespace NFBB.Core
         public IEnumerable<Genre> getGenres()
         {
             return movieRepo.GetAllGenre();
+        }
+
+        public IEnumerable<Review> GetReviewsForMovie(int movieid)
+        {
+            return movieRepo.GetReviewsForMovie(movieid);
+        }
+
+        public User GetUser(int userid)
+        {
+            return userRepo.GetById(userid);
+        }
+
+        public IEnumerable<Movie> GetMoviesSeenByUser(int userid)
+        {
+            return movieRepo.GetMoviesSeenByUser(userid);
         }
 
 
