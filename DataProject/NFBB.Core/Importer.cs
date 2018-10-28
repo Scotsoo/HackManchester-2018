@@ -102,7 +102,7 @@ namespace NFBB.Core
             var reader = File.OpenText(filepath + "movie_titles.csv");
 
             repo.DeleteGenres();
-            repo.DeleteAll();
+            //repo.DeleteAll();
 
             var titlesimported = 0;
 
@@ -131,6 +131,8 @@ namespace NFBB.Core
                     {
                         m.IMDBId = o.imdbID;
                         m.PosterUrl = "http://img.omdbapi.com/?i=" + m.IMDBId + "&h=200&apikey=7e6ca2d5";
+
+                        repo.DeleteById(m);
                         repo.Add(m);
 
                         repo.AddGenresForMovie(m.Id, o.Genre);

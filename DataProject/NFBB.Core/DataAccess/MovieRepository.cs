@@ -46,6 +46,13 @@ namespace NFBB.Core.DataAccess
             connection.Close();
         }
 
+        public void DeleteById(Movie movie)
+        {
+            connection.Open();
+            connection.Delete(movie);
+            connection.Close();
+        }
+
         public void Save(Movie r)
         {
             connection.Open();
