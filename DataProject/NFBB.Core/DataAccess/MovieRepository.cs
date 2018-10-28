@@ -28,6 +28,16 @@ namespace NFBB.Core.DataAccess
             return movies;
         }
 
+        public IEnumerable<Movie> GetByGenre(string name)
+        {
+            connection.Open();
+            string sql = "select Id, Title, year, imdbID, PosterUrl from movie where id in (select movieid from moviegenre where genre=@genre)";
+            var movies = connection.Query<Movie>(sql, new { genre = name });
+            connection.Close();
+
+            return movies;
+        }
+
         public void Add(Movie movie)
         {
             connection.Open();
@@ -104,21 +114,21 @@ namespace NFBB.Core.DataAccess
             return r;
         }
 
-        public void GetAllGenre(Genre genre)
+        public IEnumerable<Genre> GetAllGenre()
         {
             connection.Open();
 
-            string sql = "select into Genre distinct genre from movie ";
-            connection.Execute(sql, new { genre.Name });
+            var c = connection.GetList<Genre>();
             connection.Close();
+            return c;
         }
 
-        public void AddGenre(Genre genre)
+        public void AddAllGenre()
         {
             connection.Open();
 
             string sql = "insert into Genre(Name) select distinct genre from moviegenre";
-            connection.Execute(sql, new { genre.Name });
+            connection.Execute(sql);
             connection.Close();
         }
 

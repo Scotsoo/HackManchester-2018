@@ -12,7 +12,7 @@ namespace NFBB.Core
         public static bool StartImport(string filepath, MovieRepository repo, UserRepository uRepo)
         {
             Console.WriteLine("importing... " + filepath);
-            ImportTitles(filepath, repo);
+            //ImportTitles(filepath, repo);
 
             //ImportReviews(filepath, repo);
 

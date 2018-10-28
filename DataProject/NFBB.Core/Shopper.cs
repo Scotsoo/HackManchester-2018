@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 namespace NFBB.Core
@@ -25,10 +26,25 @@ namespace NFBB.Core
 
         public IEnumerable<Movie> PopulateShelves()
         {
-            var movies = movieRepo.GetAll();
+            var movies = movieRepo.GetAll().OrderBy(x => x.Title);
 
             return movies;
 
         }
+
+        public IEnumerable<Movie> PopulateShelvesForGenre(string genreName)
+        {
+            var movies = movieRepo.GetByGenre(genreName).OrderBy(x => x.Title);
+
+            return movies;
+
+        }
+
+        public IEnumerable<Genre> getGenres()
+        {
+            return movieRepo.GetAllGenre();
+        }
+
+
     }
 }
