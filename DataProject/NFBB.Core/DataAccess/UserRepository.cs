@@ -23,6 +23,16 @@ namespace NFBB.Core.DataAccess
             connection = cnn;
         }
 
+        public User GetById(int userid)
+        {
+            connection.Open();
+            var user = connection.Get<User>(userid);
+
+            connection.Close();
+
+            return user;
+        }
+
         public void DeleteAll()
         {
             connection.Open();

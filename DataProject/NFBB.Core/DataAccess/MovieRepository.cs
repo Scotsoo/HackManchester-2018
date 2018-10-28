@@ -39,6 +39,16 @@ namespace NFBB.Core.DataAccess
             return movies;
         }
 
+        public IEnumerable<Movie> GetMoviesSeenByUser(int userid)
+        {
+            connection.Open();
+            string sql = "select Id, Title, year, imdbID, PosterUrl,MaxRating, AverageRating, NoOfRatings, Available from vwmovie where id in (select movieid from review where userid=@userid)";
+            var movies = connection.Query<Movie>(sql, new { userid=userid });
+            connection.Close();
+
+            return movies;
+        }
+
         public void Add(Movie movie)
         {
             connection.Open();
@@ -85,6 +95,8 @@ namespace NFBB.Core.DataAccess
             connection.Execute(sql, new { review.MovieId, review.UserId, review.Rating, review.Date });
             connection.Close();
         }
+
+        
 
 
         public void DeleteAllReviews()

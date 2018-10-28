@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace NFBB.Core
 {
@@ -16,14 +17,14 @@ namespace NFBB.Core
 
             ImportReviews(filepath, repo);
 
-            //GenerateUsers(uRepo);
+            GenerateUsers(uRepo);
             return true;
 
         }
 
         private static void GenerateUsers(UserRepository repo)
         {
-            repo.DeleteAll();
+            //repo.DeleteAll();
             var missingUsers = repo.GetMissingUsers();
             var newUsers = repo.CreateRandomUsers(missingUsers);
             repo.SaveUsers(newUsers);
@@ -58,7 +59,6 @@ namespace NFBB.Core
             while (c < Int32.MaxValue && !reader.EndOfStream)
             {
 
-
                 var line = reader.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
@@ -66,10 +66,11 @@ namespace NFBB.Core
                     {
                         movieid = Int32.Parse(line.Replace(":", ""));
                         itemsPerCompany = 0;
+                        Console.WriteLine(movieid);
                     }
                     else
                     {
-                        if (itemsPerCompany < 2)
+                        if (itemsPerCompany < 5)
                         {
                             var items = line.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
@@ -83,8 +84,13 @@ namespace NFBB.Core
                             };
                             itemsPerCompany++;
 
-                            repo.AddReview(r);
+                            var existingReviews = repo.GetReviewsByUserAndMovie(r.UserId, movieid);
 
+                            if (existingReviews.Count() == 0)
+                            {
+                                repo.AddReview(r);
+
+                            }
                             reviewsimported++;
                         }
 
