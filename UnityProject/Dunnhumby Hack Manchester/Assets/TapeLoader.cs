@@ -36,6 +36,7 @@ public class TapeLoader : MonoBehaviour
                 var randomNumber = rnd.Next(0, len);
                 var randomMovie = movies[randomNumber];
                 var tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+                child.MovieMetadata = randomMovie;
                 using (var www = new WWW(randomMovie.PosterUrl))
                 {
                     yield return www;
@@ -66,6 +67,22 @@ public class TapeLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //var speed = 0.1f;
+        //if (Input.GetKey(KeyCode.RightArrow))
+        //{
+        //    transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        //}
+        //if (Input.GetKey(KeyCode.LeftArrow))
+        //{
+        //    transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+        //}
+        //if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+        //}
+        //if (Input.GetKey(KeyCode.UpArrow))
+        //{
+        //    transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+        //}
     }
 }

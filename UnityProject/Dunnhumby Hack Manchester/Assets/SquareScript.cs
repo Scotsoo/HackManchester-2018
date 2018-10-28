@@ -1,5 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using NFBB.Core;
 using UnityEngine;
 
 public class SquareScript : MonoBehaviour {
@@ -21,7 +25,24 @@ public class SquareScript : MonoBehaviour {
 
     public void OnClick()
     {
-        var movieId = gameObject.GetComponent<TapeMetadata>().MovieMetadata.Id;
-        Debug.Log("CLICKING!!");
+        var menuItem = GameObject.FindGameObjectWithTag("Menu");
+        var movieMetaData = gameObject.GetComponentInParent<TapeMetadata>();
+        if (movieMetaData)
+        {
+
+            var movieId = movieMetaData.MovieMetadata.Id;
+            Shopper s = new Shopper();
+            var reviews = s.GetReviewsForMovie(movieId);
+            menuItem.GetComponent<MenuMetaData>().Reviews = reviews;
+        }
+
+        if (menuItem.GetComponent<MenuMetaData>().Visible)
+        {
+            menuItem.GetComponent<MenuMetaData>().Hide();
+        }
+        else
+        {
+            menuItem.gameObject.GetComponent<MenuMetaData>().Show();
+        }
     }
 }
