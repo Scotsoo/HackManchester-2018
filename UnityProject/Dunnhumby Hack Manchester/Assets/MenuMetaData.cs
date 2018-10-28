@@ -44,8 +44,8 @@ public class MenuMetaData : MonoBehaviour
         }
         else
         {
-            gameObject.transform.position = new Vector3(0f, 0f, 0f);
-            gameObject.transform.rotation = new Quaternion(0.0f, Camera.main.transform.rotation.y, 0.0f, Camera.main.transform.rotation.w);
+            gameObject.transform.position = new Vector3(-50f, -500f, -500f);
+            gameObject.transform.rotation = new Quaternion(0.0f, 0, 0.0f, 0);
 
         }
     }
@@ -57,7 +57,18 @@ public class MenuMetaData : MonoBehaviour
         var review = reviews[randomNumber];
         var s = new Shopper();
         var user = s.GetUser(review.UserId);
-
+        var moviesSeen = s.GetMoviesSeenByUser(user.UserId);
+        
+        var filmCount = GameObject.FindGameObjectWithTag("FilmCount");
+        var filmName = GameObject.FindGameObjectWithTag("FilmName");
+        filmName.GetComponent<TextMesh>().text = moviesSeen.First(f => f.Id == review.MovieId).Title;
+        filmCount.GetComponent<TextMesh>().text = moviesSeen.ToList().Count.ToString();
+        var filmNameRating = GameObject.FindGameObjectWithTag("FilmNameRating");
+        var randomFilm = moviesSeen.ToList().First(f => f.Id != review.MovieId);
+        filmNameRating.GetComponent<TextMesh>().text = randomFilm.Title;
+        var userText = GameObject.FindGameObjectWithTag("Fullname");
+        userText.GetComponent<TextMesh>().text = user.Name;
+        //user.
         using (var www = new WWW(user.Image))
         {
 
@@ -67,7 +78,7 @@ public class MenuMetaData : MonoBehaviour
             var pic = GameObject.FindGameObjectWithTag("Picture");
             pic.GetComponent<Renderer>().material.mainTexture = tex;
         }
-        }
-
     }
+
+}
 

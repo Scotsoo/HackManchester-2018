@@ -33,6 +33,7 @@ public class SquareScript : MonoBehaviour {
             var movieId = movieMetaData.MovieMetadata.Id;
             Shopper s = new Shopper();
             var reviews = s.GetReviewsForMovie(movieId);
+            var test = menuItem.GetComponent<MenuMetaData>();
             menuItem.GetComponent<MenuMetaData>().Reviews = reviews;
         }
 

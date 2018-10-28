@@ -10,6 +10,12 @@ TagManager:
   - Mneu
   - Menu
   - Picture
+  - Fullname
+  - Pointer
+  - FilmCount
+  - FilmNameRating
+  - FilmRatingRating
+  - FilmName
   layers:
   - Default
   - TransparentFX

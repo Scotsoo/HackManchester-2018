@@ -67,7 +67,7 @@ public class TapeLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //var speed = 0.1f;
+        var speed = 1f;
         //if (Input.GetKey(KeyCode.RightArrow))
         //{
         //    transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
@@ -80,9 +80,9 @@ public class TapeLoader : MonoBehaviour
         //{
         //    transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
         //}
-        //if (Input.GetKey(KeyCode.UpArrow))
-        //{
-        //    transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
-        //}
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+        }
     }
 }
