@@ -7,19 +7,60 @@ UnityGenerated/
 Library/
 Assets/AssetStoreTools*
 
+**/HackMcr2018DataImport/Data/*
+*.config
+
+**/HackMcr2018DataImport/*
+**/HackMcrDataTester/*
+**/HackMcrTester/*
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 ExportedObj/
 *.svd
 *.userprefs
-*.csproj
 *.pidb
 *.suo
-*.sln
+# *.sln
 *.user
 *.unityproj
 *.booproj
+
+#Visual Studio Files
+[Oo]bj
+[Bb]in
+[Dd]ebug
+[Bb]uild/
+*.user
+*.suo
+*.exe
+*.pdb
+*.aps
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.[Cc]ache
+*.bak
+*.ncb
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+ipch/ 
+*.dbmdl
+*.csproj.user
+*.cache
+*.swp
+*.vspscc
+*.vssscc
+*.bak.*
+*.bak
+
+**/.vs
 
 # ============ #
 # OS generated #
