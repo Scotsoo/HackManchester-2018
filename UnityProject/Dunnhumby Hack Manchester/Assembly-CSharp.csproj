@@ -178,6 +178,7 @@
     <Compile Include="Assets\Safder Scripts\JackTesting.cs" />
     <Compile Include="Assets\Safder Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ObjectController.cs" />
+    <Compile Include="Assets\SquareScript.cs" />
     <Compile Include="Assets\TapeGroup.cs" />
     <Compile Include="Assets\TapeLoader.cs" />
     <Compile Include="Assets\TapeMetadata.cs" />
