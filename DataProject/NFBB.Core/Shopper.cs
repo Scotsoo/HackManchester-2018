@@ -61,16 +61,6 @@ namespace NFBB.Core
             return movieRepo.GetMoviesSeenByUser(userid);
         }
 
-        public IEnumerable<Actor> GetActorsForMovie(int movieid)
-        {
-            return movieRepo.GetActorsForMovie(movieid);
-        }
-
-        public IEnumerable<Movie> GetMoviesForActor(string actorname)
-        {
-            return movieRepo.GetMoviesForActor(actorname);
-        }
-
 
     }
 }

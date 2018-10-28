@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using NFBB.Core;
-using UnityEditorInternal;
 
 public class Tape
 {
@@ -69,11 +68,6 @@ public class TapeLoader : MonoBehaviour
     void Update()
     {
         var _velocity = 2f;
-
-        //_velocity = Vector3.zero;
-        //Debug.Log("y" + );
-        Debug.Log("x" + transform.position.x);
-        Debug.Log("z" + transform.position.z);
         if (Input.GetKey(KeyCode.D))
         {
             transform.position = transform.position + Camera.main.transform.right * _velocity * Time.deltaTime;

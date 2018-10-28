@@ -16,9 +16,6 @@ TagManager:
   - FilmNameRating
   - FilmRatingRating
   - FilmName
-  - Actor Count
-  - ActorName
-  - ActorCount
   layers:
   - Default
   - TransparentFX

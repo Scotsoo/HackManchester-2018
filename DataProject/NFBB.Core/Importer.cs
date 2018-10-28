@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
-using System.Threading;
 
 namespace NFBB.Core
 {
@@ -16,40 +15,11 @@ namespace NFBB.Core
             Console.WriteLine("importing... " + filepath);
             //ImportTitles(filepath, repo);
 
-            //ImportReviews(filepath, repo);
+            ImportReviews(filepath, repo);
 
-            //GenerateUsers(uRepo);
-
-            //ImportActorDetails(repo);
+            GenerateUsers(uRepo);
             return true;
 
-        }
-
-        private static void ImportActorDetails(MovieRepository repo)
-        {
-            var actors = repo.GetAllActors().Where(a=>a.Image==null).OrderBy(x=>x.Name);
-
-            foreach(var actor in actors)
-            {
-                var details = repo.GetActorDetails(actor.Name);
-
-                if (details.results.Count() > 0)
-                {
-
-                    string image = "https://image.tmdb.org/t/p/w500/" + details.results.First().profile_path;
-
-                    actor.Image = image;
-                    actor.WikiPage = "https://en.wikipedia.org/wiki/" + actor.Name.Replace(" ", "_");
-
-                    repo.SaveActor(actor);
-                    Console.WriteLine("Saved.. " + actor.Name);
-                }
-                else
-                {
-                    Console.WriteLine("Not found.. " + actor.Name);
-                }
-                Thread.Sleep(250);
-            }
         }
 
         private static void GenerateUsers(UserRepository repo)
@@ -119,6 +89,7 @@ namespace NFBB.Core
                             if (existingReviews.Count() == 0)
                             {
                                 repo.AddReview(r);
+
                             }
                             reviewsimported++;
                         }
@@ -137,7 +108,6 @@ namespace NFBB.Core
             var reader = File.OpenText(filepath + "movie_titles.csv");
 
             repo.DeleteGenres();
-            repo.DeleteActors();
             //repo.DeleteAll();
 
             var titlesimported = 0;
@@ -172,9 +142,7 @@ namespace NFBB.Core
                         repo.Add(m);
 
                         repo.AddGenresForMovie(m.Id, o.Genre);
-                        repo.AddActorsForMovie(m.Id, o.Actors);
                         titlesimported++;
-                        Console.WriteLine("Added... " + m.Title);
                     }
 
                     
